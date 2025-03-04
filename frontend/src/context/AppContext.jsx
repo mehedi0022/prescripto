@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
   const currency = "৳ ";
-  const backendUrl = "https://backend-teal-five-78.vercel.app";
+  const backendUrl = "http://backend-teal-five-78.vercel.app";
 
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
