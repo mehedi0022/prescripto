@@ -19,6 +19,10 @@ app.use("/api/admin", adminRoute);
 app.use("/api/doctor", doctorRoute);
 app.use("/api/user", userRoute);
 
+app.get("/", (req, res) => {
+  res.send("Api Working");
+});
+
 // Connect Database
 connectDB();
 // Connect Cloudinary
