@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const DoctorContext = createContext();
 
 const DoctorContextProvider = (props) => {
-  const backendUrl = "http://backend-teal-five-78.vercel.app";
+  const backendUrl = "https://backend-teal-five-78.vercel.app";
 
   const [dToken, setDToken] = useState(
     localStorage.getItem("dToken") ? localStorage.getItem("dToken") : ""

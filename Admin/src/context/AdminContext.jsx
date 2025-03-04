@@ -12,7 +12,7 @@ const AdminContextProvider = (props) => {
   const [appoinments, setAppoinments] = useState([]);
   const [dashData, setDashData] = useState(false);
 
-  const backendUrl = "http://backend-teal-five-78.vercel.app";
+  const backendUrl = "https://backend-teal-five-78.vercel.app";
   const getAllDoctors = async () => {
     try {
       const { data } = await axios.get(backendUrl + "/api/admin/all-doctors", {
