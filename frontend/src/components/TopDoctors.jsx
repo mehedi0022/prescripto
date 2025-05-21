@@ -1,10 +1,29 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const TopDoctors = () => {
   const navigate = useNavigate();
-  const { doctors } = useContext(AppContext);
+  const { doctors, loading } = useContext(AppContext);
+
+  if (loading) {
+    return (
+      <div className="container m-auto">
+        <PropagateLoader
+          loading={loading}
+          size={15}
+          cssOverride={{
+            display: "block",
+            margin: "0 auto",
+            borderColor: "red",
+          }}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
@@ -12,6 +31,7 @@ const TopDoctors = () => {
       <p className="sm:w-1/3 text-center text-sm">
         Simply browse through our extensive list of trasted Docctors.
       </p>
+
       <div className="w-full grid grid-cols-auto gap-4 pt-5 gap-y-6 px-3 sm:px-0">
         {doctors.slice(0, 12).map((item, index) => (
           <div
@@ -34,6 +54,7 @@ const TopDoctors = () => {
           </div>
         ))}
       </div>
+
       <button
         onClick={() => {
           navigate(`/doctors`);

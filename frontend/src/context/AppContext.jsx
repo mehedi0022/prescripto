@@ -8,6 +8,7 @@ const AppContextProvider = (props) => {
   const currency = "৳ ";
   const backendUrl = "https://prescriptobackend-teal.vercel.app";
 
+  const [loading, setLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);
   const [token, setToken] = useState(
     localStorage.getItem("token") ? localStorage.getItem("token") : false
@@ -17,6 +18,7 @@ const AppContextProvider = (props) => {
 
   const getDoctorData = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.get(backendUrl + "/api/doctor/list");
       if (data.success) {
         setDoctors(data.doctors);
@@ -26,6 +28,8 @@ const AppContextProvider = (props) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,6 +60,7 @@ const AppContextProvider = (props) => {
     userData,
     setUserData,
     loadUserProfile,
+    loading,
   };
 
   useEffect(() => {
