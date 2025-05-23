@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
   const currency = "৳ ";
+  const backendUrl2 = "http://localhost:5000";
   const backendUrl = "https://prescriptobackend-teal.vercel.app";
 
   const [loading, setLoading] = useState(true);

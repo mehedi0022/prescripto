@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 export const DoctorContext = createContext();
 
 const DoctorContextProvider = (props) => {
+  const backendUrl2 = "http://localhost:5000";
   const backendUrl = "https://prescriptobackend-teal.vercel.app";
 
   const [dToken, setDToken] = useState(

@@ -12,6 +12,7 @@ const AdminContextProvider = (props) => {
   const [appoinments, setAppoinments] = useState([]);
   const [dashData, setDashData] = useState(false);
 
+  const backendUrl2 = "http://localhost:5000";
   const backendUrl = "https://prescriptobackend-teal.vercel.app";
   const getAllDoctors = async () => {
     try {

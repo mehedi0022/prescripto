@@ -5,27 +5,9 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 
 const TopDoctors = () => {
   const navigate = useNavigate();
-  const { doctors, loading } = useContext(AppContext);
+  const { doctors } = useContext(AppContext);
 
-  if (loading) {
-    return (
-      <div className="container m-auto">
-        <PropagateLoader
-          loading={loading}
-          size={15}
-          cssOverride={{
-            display: "block",
-            margin: "0 auto",
-            borderColor: "red",
-          }}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
-      </div>
-    );
-  }
-
-  return (
+  return doctors.length > 0 ? (
     <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
       <h1 className="text-3xl font-medium">Top Doctors to Book</h1>
       <p className="sm:w-1/3 text-center text-sm">
@@ -64,6 +46,27 @@ const TopDoctors = () => {
       >
         more
       </button>
+    </div>
+  ) : (
+    <div className="flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10">
+      <h1 className="text-3xl font-medium">Top Doctors to Book</h1>
+      <p className="sm:w-1/3 text-center text-sm">
+        Simply browse through our extensive list of trasted Docctors.
+      </p>
+
+      <div className="flex items-center justify-center">
+        <PropagateLoader
+          loading={true}
+          size={15}
+          cssOverride={{
+            display: "block",
+            margin: "0 auto",
+            borderColor: "red",
+          }}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
     </div>
   );
 };
